@@ -3,7 +3,7 @@
 <h1>🚨 CRAS — Crisis Resource Allocation System
 Prioritize emergency requests. Manage scarce resources. Track allocation transparently.</h1>
 
-<h3>Emergency Requests • Priority Scheduling • Inventory Management • Allocation & Preemption • JWT Security • Audit Logs • GIS Map</h3>
+<h3>Emergency Requests • Priority Scheduling • Inventory Management • Allocation & Preemption • JWT Security • Audit Logs </h3>
 
 
 
@@ -26,7 +26,7 @@ The system includes:
 - Priority scoring and resource-specific scheduling queues
 - Allocation, completion, and preemption workflows
 - Audit records and allocation history
-- A frontend with manager/admin views and a GIS map
+- A frontend with manager
 <b>📌 Current Status</b>
 The project is developed in phases. The repository includes more than basic request storage, but it should still be treated as a prototype rather than a production emergency-response platform.
 Area	Status	Notes
@@ -41,9 +41,6 @@ Scheduling queues	✅ Implemented	Resource-specific queue and aging-related sche
 Allocation workflow	✅ Implemented in prototype	Allocation service, inventory updates and allocation records
 Preemption workflow	✅ Present in prototype	Manager endpoint and allocation/preemption service logic
 Audit and admin views	✅ Implemented	User list, allocation history, audit records and summary
-WebSocket/realtime service	⚙️ Included in codebase	Verify runtime behavior and frontend integration before claiming production-ready realtime updates
-GIS map	✅ Frontend feature included	Leaflet/OpenStreetMap-based map; data depends on configured locations and requests
-Real ML prediction	🗓️ Not included	Priority calculation is rule-based; no AI prediction/confidence score
 Production hardening and stress testing	🗓️ Future work	Requires additional testing, security review and deployment configuration
 
 
@@ -124,42 +121,6 @@ RESOURCE_MANAGER	Review queues, dispatch/allocate resources, and manage allocati
 ADMIN	Review users, allocations, audit records and administrative summaries
 
 
-Public registration should create community-user accounts only. Privileged roles should be assigned through a controlled administrative process.
-Demo accounts
-The original project README lists these local demo accounts:
-Role	Email	Password
-Community user	user@cras.local	User@123
-Resource manager	manager@cras.local	Manager@123
-Admin	admin@cras.local	Admin@123
-
-
-These credentials may depend on the configured data initializer. If they do not work in your checkout, inspect DataInitializer.java and the current database contents. Demo credentials are for local testing only; never reuse them in production.
-🔌 API Reference
-The following routes are present in the backend controller mappings. Authentication/role requirements and request DTO fields should be checked in the corresponding controller and security configuration.
-Method	Endpoint	Purpose
-GET	/api/health	Backend health check
-POST	/api/auth/register	Register a community user
-POST	/api/auth/login	Authenticate and receive a token
-GET	/api/resources	List resources
-POST	/api/resources	Create a resource
-PUT	/api/resources/{id}/stock?quantity={quantity}	Update resource stock
-GET	/api/requests	List emergency requests
-POST	/api/requests	Create an emergency request
-GET	/api/locations	List locations
-POST	/api/locations	Create a location
-GET	/api/manager/dashboard	Resource-manager dashboard summary
-GET	/api/manager/queue	List pending requests
-GET	/api/manager/queue/{resourceId}	View queue for a resource
-POST	/api/manager/dispatch/{resourceId}	Run dispatch/scheduling for a resource
-POST	/api/manager/allocate/{requestId}	Allocate a request
-POST	/api/manager/preempt/{requestId}	Run the preemption workflow
-POST	/api/manager/complete/{requestId}	Mark a request as completed
-GET	/api/admin/users	List users (admin)
-GET	/api/admin/audit	View audit records (admin)
-GET	/api/admin/allocations	View allocation history (admin)
-GET	/api/admin/summary	View administrative summary
-
-
 Example: Login
 POST /api/auth/login
 {
@@ -191,7 +152,6 @@ Aging / waiting time	10%
 
 The score is intended to help order requests for scheduling. Confirm the exact normalization and calculation in PriorityService.java before comparing scores or changing the formula.
 
-Important: AI prediction and confidence scoring are not included in this version. A weighted score is a prototype heuristic, not a validated emergency-response standard.
 📦 Resource Allocation Workflow
 Emergency Request
        |
@@ -265,11 +225,6 @@ Demo 5 — Admin and audit
 1. Sign in as an administrator.
 2. Review users, allocation history and audit records.
 3. Confirm that protected endpoints reject unauthorized roles.
-Demo 6 — GIS map
-1. Open the map view.
-2. Check registered locations and request markers.
-3. Inspect the marker information.
-4. Confirm that the displayed data matches the backend response.
 🗂️ Project Structure
 CRAS/
 ├── backend/
@@ -309,7 +264,6 @@ Phase III — Further Development
 - Improve preemption rules and inventory consistency under concurrent load.
 - Expand real-time notifications and frontend integration.
 - Add automated tests, stress testing and performance measurements.
-- Evaluate optional GIS enhancements and real ML prediction as separate future work.
 🤝 Contributing
 1. Fork the repository.
 2. Create a feature branch.
@@ -326,8 +280,6 @@ git push origin feature/your-feature-name
 - Spring Data JPA Documentation
 - MySQL Documentation
 - React Documentation
-- Leaflet Documentation
-- OpenStreetMap
 <div align="center">
 
 CRAS — Making emergency resource requests more structured, traceable, and allocation-aware.
