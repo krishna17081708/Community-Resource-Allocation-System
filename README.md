@@ -80,8 +80,8 @@ POST /api/users
 
 JSON:
 {
-  "name": "Arushi",
-  "email": "arushi@example.com",
+  "name": "kartik",
+  "email": "kartik@example.com",
   "role": "COMMUNITY_USER",
   "location": "Dehradun"
 }
