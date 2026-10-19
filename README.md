@@ -1,9 +1,9 @@
 <div align="center">
 
-🚨 CRAS — Crisis Resource Allocation System
-Prioritize emergency requests. Manage scarce resources. Track allocation transparently.
+<h1>🚨 CRAS — Crisis Resource Allocation System
+Prioritize emergency requests. Manage scarce resources. Track allocation transparently.</h1>
 
-Emergency Requests • Priority Scheduling • Inventory Management • Allocation & Preemption • JWT Security • Audit Logs • GIS Map
+<h3>Emergency Requests • Priority Scheduling • Inventory Management • Allocation & Preemption • JWT Security • Audit Logs • GIS Map</h3>
 
 
 
@@ -12,7 +12,7 @@ Emergency Requests • Priority Scheduling • Inventory Management • Allocati
 
 </div>
 
-🎯 What is CRAS?
+<b>🎯 What is CRAS?</b>
 CRAS (Crisis Resource Allocation System) is a prototype for managing emergency requests and allocating limited resources such as water, food, and essential supplies. It combines a Spring Boot backend, a MySQL database, and a React frontend to demonstrate request management, priority-based scheduling, inventory tracking, and role-based access.
 ⚠️ The problem: During an emergency, multiple requests may compete for limited supplies. Recording requests alone is not enough: the system must consider urgency, track available inventory, and maintain a record of what was allocated.
 
@@ -27,7 +27,7 @@ The system includes:
 - Allocation, completion, and preemption workflows
 - Audit records and allocation history
 - A frontend with manager/admin views and a GIS map
-📌 Current Status
+<b>📌 Current Status</b>
 The project is developed in phases. The repository includes more than basic request storage, but it should still be treated as a prototype rather than a production emergency-response platform.
 Area	Status	Notes
 MySQL database + JPA entities	✅ Implemented	Users, roles, locations, resources, requests, allocations and audit logs
